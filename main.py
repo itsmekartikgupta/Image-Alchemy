@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, flash
 from werkzeug.utils import secure_filename
 import os
 import cv2
+#importing dependncies
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'png', 'webp', 'jpg', 'jpeg', 'gif'}
@@ -74,7 +75,7 @@ def edit():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             new = processImage(filename, operation)
-            flash(f"your img has been processed and is avail <a href='{new}' target='_blank'>here</a>")
+            flash(f"Voila ! Your Image Enchanted. Link revealed <a href='{new}' target='_blank'>here</a>")
             return render_template("index.html")
     
     return render_template("index.html")
